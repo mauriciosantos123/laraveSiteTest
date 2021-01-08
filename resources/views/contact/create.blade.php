@@ -1,7 +1,7 @@
 @extends('comum.index')
 @section('content')
-
-<div class="g-pa-20">
+<div>
+<div class="g-pa-20 " >
     <h1 class="g-font-weight-300 g-font-size-28 g-color-black g-mb-30">Contatos</h1>
     <div class="g-mb-80">
         <form action="{{route('contact.store')}}" method="POST">
@@ -23,7 +23,7 @@
         </form>
     </div>
 </div>
-
+</div>
 
 
 @endsection()

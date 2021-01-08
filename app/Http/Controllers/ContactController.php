@@ -64,8 +64,8 @@ class ContactController extends Controller
      */
     public function show($id)
     {
-       $reg = Contact::findOrFail($id);
-	$data['reg']=$reg;
+       $contat = Contact::findOrFail($id);
+	$data['contat']=$contat;
 	 
 		return view("contact.edit",$data);
     }
@@ -82,9 +82,9 @@ class ContactController extends Controller
 	$data['id']= $id;
 	
 
-
-	$reg = Contact::findOrFail($id);
-        $data['reg']=$reg;
+    $data['contat']=$contat;
+	$contat = Contact::findOrFail($id);
+    
 
         return view("contact.edit",$data);
 
@@ -101,7 +101,7 @@ class ContactController extends Controller
     public function update(Request $request, $id)
     {
         //
-	$reg->update($this->process_form($request));
+	$contat->update($this->process_form($request));
 
 	$request->session()->flash('alert','Editado com Sucesso');
 	return redirect()->to(contact);

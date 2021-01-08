@@ -1,18 +1,19 @@
 @extends('comum.index')
 
 @section('content')
+<div class="g-pa-20">
+    <h1 class="g-font-weight-300 g-font-size-28 g-color-black g-mb-30">Contact</h1>
 
-
-    <a href="" class="btn btn-primary">Contacts</a>
+    <a href="{{route('contact.create')}}" class="btn btn-primary">Novo</a>
 
     <div class="table-borderless g-mb-40 ">
         <table class="table u-table--v3 g-color-black">
             <thead>
                 <tr>
-                    <th width="40px"> </th>
+                    
                     <th>Name</th>
-                    <th>resumo</th>
-		   <th>descrição</th>
+                    <th>phone</th>
+		    <th>mensagem</th>
                     <th>Actions</th>
 
                 </tr>
@@ -20,13 +21,13 @@
 
             <tbody>
                 
-                @foreach($listContact as $i => $contact)
+                @foreach($listContact as $i => $contt)
                 
 
-            <td><img src="" class="w-100" ></td>
-            <td>{{ $contact->name }}</td>
-            <td>{{ $contact->resumo }}</td>
-	    <td>{{ $contact->desc}}</td>
+            
+            <td>{{ $contt->name }}</td>
+            <td>{{ $contt->phone }}</td>
+	    <td>{{ $contt->msg}}</td>
 
             <td>
                 <div class="g-pos-rel g-top-3 d-inline-block">
@@ -35,10 +36,10 @@
                     </a>
 
                     <div id="dropDown{{$i}}" class="u-shadow-v31 g-pos-abs g-right-0 g-z-index-2 g-bg-white u-dropdown--css-animation u-dropdown--hidden u-dropdown" aria-labelledby="dropDown1Invoker">
-                        <form action="" method="POST">
+                        <form action="{{route('contact.destroy', $contt->id)}}" method="POST">
                             <ul class="list-unstyled g-nowrap mb-0">
                                 <li>
-                                    <a class="d-flex align-items-center u-link-v5 g-bg-gray-light-v8--hover g-font-size-12 g-font-size-default--md g-color-gray-dark-v6 g-px-25 g-py-14 btn-info" href="">
+                                    <a class="d-flex align-items-center u-link-v5 g-bg-gray-light-v8--hover g-font-size-12 g-font-size-default--md g-color-gray-dark-v6 g-px-25 g-py-14 btn-info" href="{{route('contact.edit', $contt->id)}}">
                                         <i class="hs-admin-pencil g-font-size-18 g-color-gray-light-v6 g-mr-10 g-mr-15--md"></i>
                                         Edit
                                     </a>
@@ -62,8 +63,9 @@
             @endforeach
             </tbody>
         </table>
+    </div>
+</div>
 
 @endsection()
 
-@section('footer')
-@endsection
+
